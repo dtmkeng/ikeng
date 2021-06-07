@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phumiseto</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 <body>
     <div class="px-8 py-8">
@@ -19,9 +21,9 @@
                     <p><b>Birthday:</b></p>
                 </div>
                 <div class="ml-2">
-                    <p>Phumai Chanphunga</p>
-                    <p>24</p>
-                    <p>14/03/1997</p>
+                    <p>{{name}}</p>
+                    <p>{{age}}</p>
+                    <p>{{birtday}}</p>
                 </div>
             </div>
         </div>
@@ -32,7 +34,7 @@
                     <p><b>Bachelor's degree:</b></p>
                 </div>
                 <div class="ml-2">
-                    <p>Computer Engineer at Suranaree University of Technology</p>
+                    <p>{{education}}</p>
                 </div>
             </div>
         </div>
@@ -40,7 +42,7 @@
             <div class="text-lg font-bold">Working Experience</div>
             <div class="flex pl-8">
                 <div>
-                    <p><b>2020 - Present:</b></p>
+                    <p><b>{{exp}}:</b></p>
                 </div>
                 <div class="ml-2">
                     <p>Software developer at <a class="hover:text-blue-800" href="https://www.facebook.com/oddsteam">ODDS</a></p>
@@ -56,12 +58,21 @@
                     <p><b>Twitter:</b></p>
                 </div>
                 <div class="ml-2">
-                    <p><a class="hover:text-blue-800" href="https://github.com/dtmkeng">dtmkeng</a></p>
-                    <p><a class="hover:text-blue-800" href="https://medium.com/@phumiseto">https://medium.com/@phumiseto</a></p>
-                    <p><a class="hover:text-blue-800" href="https://twitter.com/ikengsu">https://twitter.com/ikengsu</a></p>
+                    <p><a class="hover:text-blue-800" href="{{github_url}}">{{github}}</a></p>
+                    <p><a class="hover:text-blue-800" href="{{medium}}">{{medium}}</a></p>
+                    <p><a class="hover:text-blue-800" href="{{twitter}}">{{twitter}}</a></p>
                 </div>
             </div>
         </div>
     </div>
+    <div class="ml-8">
+        <p>Subscribe Me</p>
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {{ form.email }}
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
 </body>
 </html>
