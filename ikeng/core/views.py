@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views import View
-from core.models import Profile
+from core.models.profile import Profile
 from core.forms import SubscriberForm
+from core.models.subscriber import SubscriberModel
 
 
 # Create your views here.
@@ -34,6 +35,11 @@ class IndexView(View):
         if form.is_valid():
             print(form.cleaned_data)
             print(form.cleaned_data.get('email'))
+            email = form.cleaned_data.get('email')
+            SubscriberModel.objects.create(
+                email=email
+            )
+            form =  SubscriberForm()
 
         return render(request, 'profile.html',
             {
