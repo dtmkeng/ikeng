@@ -6,56 +6,68 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='age',
+            model_name="profile",
+            name="age",
             field=models.IntegerField(default=24),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='birtday',
-            field=models.CharField(default='14/03/2540', max_length=255),
+            model_name="profile",
+            name="birtday",
+            field=models.CharField(default="14/03/2540", max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='education',
-            field=models.CharField(default='Computer Engineer at Suranaree University of Technology', max_length=255),
+            model_name="profile",
+            name="education",
+            field=models.CharField(
+                default="Computer Engineer at Suranaree University of Technology",
+                max_length=255,
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='exp',
-            field=models.CharField(default='Computer Engineer at Suranaree University of Technology', max_length=255),
+            model_name="profile",
+            name="exp",
+            field=models.CharField(
+                default="Computer Engineer at Suranaree University of Technology",
+                max_length=255,
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='github',
-            field=models.CharField(default='dtmkeng', max_length=255),
+            model_name="profile",
+            name="github",
+            field=models.CharField(default="dtmkeng", max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='github_url',
-            field=models.CharField(default='https://github.com/dtmkeng', max_length=255),
+            model_name="profile",
+            name="github_url",
+            field=models.CharField(
+                default="https://github.com/dtmkeng", max_length=255
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='medium',
-            field=models.CharField(default='https://medium.com/@phumiseto', max_length=255),
+            model_name="profile",
+            name="medium",
+            field=models.CharField(
+                default="https://medium.com/@phumiseto", max_length=255
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='profile',
-            name='twitter',
-            field=models.CharField(default='https://twitter.com/ikengsu', max_length=255),
+            model_name="profile",
+            name="twitter",
+            field=models.CharField(
+                default="https://twitter.com/ikengsu", max_length=255
+            ),
             preserve_default=False,
         ),
     ]
