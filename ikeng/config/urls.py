@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import (
+from ikeng.core.views import (
     IndexView,
     SubscriberAPIView,
+    ProfileAPIView,
 )
 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
     path("", IndexView.as_view(), name="class-view"),
     path("admin/", admin.site.urls),
     path("subscribers/", SubscriberAPIView.as_view()),
+    path("profile/", ProfileAPIView.as_view()),
 ]

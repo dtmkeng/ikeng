@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from core.models.subscriber import SubscriberModel
+from ikeng.core.models.subscriber import SubscriberModel
+from ikeng.core.models.profile import Profile
 
 
 class SubscriberSerializer(serializers.Serializer):
@@ -7,3 +8,9 @@ class SubscriberSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return SubscriberModel.objects.create(**validated_data)
+
+
+class ProfileSerailizer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'

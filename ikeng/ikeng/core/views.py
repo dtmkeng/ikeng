@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.views import View
 from rest_framework.views import APIView
 from rest_framework import status
-from core.models.profile import Profile
-from core.forms import SubscriberForm
-from core.models.subscriber import SubscriberModel
-from core.serializers import SubscriberSerializer
+from ikeng.core.models.profile import Profile
+from ikeng.core.forms import SubscriberForm
+from ikeng.core.models.subscriber import SubscriberModel
+from ikeng.core.serializers import (
+    SubscriberSerializer,
+    ProfileSerailizer,
+)
 from rest_framework.response import Response
 
 
@@ -72,6 +75,21 @@ class SubscriberAPIView(APIView):
 
     def post(self, request):
         serializer = SubscriberSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileAPIView(APIView):
+    def get(self, request):
+        profile = Profile.objects.first()
+        serailizer = ProfileSerailizer(profile)
+        return Response(serailizer.data)
+
+    def post(self, request):
+        serializer = ProfileSerailizer(data=request.data)
         serializer.is_valid(raise_exception=True)
         if serializer.is_valid():
             serializer.save()
