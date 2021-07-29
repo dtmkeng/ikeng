@@ -5,9 +5,11 @@ from rest_framework import status
 from ikeng.core.models.profile import Profile
 from ikeng.core.forms import SubscriberForm
 from ikeng.core.models.subscriber import SubscriberModel
+from ikeng.core.models.post import Post
 from ikeng.core.serializers import (
     SubscriberSerializer,
     ProfileSerailizer,
+    PostSerailizer,
 )
 from rest_framework.response import Response
 
@@ -95,3 +97,10 @@ class ProfileAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class PostAPIView(APIView):
+    def get(self, request):
+        profile = Post.objects.first()
+        serailizer = PostSerailizer(profile)
+        return Response(serailizer.data)

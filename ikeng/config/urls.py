@@ -19,6 +19,7 @@ from ikeng.core.views import (
     IndexView,
     SubscriberAPIView,
     ProfileAPIView,
+    PostAPIView,
 )
 
 urlpatterns = [
@@ -27,4 +28,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("subscribers/", SubscriberAPIView.as_view()),
     path("profile/", ProfileAPIView.as_view()),
+    path("post/", PostAPIView.as_view()),
 ]
